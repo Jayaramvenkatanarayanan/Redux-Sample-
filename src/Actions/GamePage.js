@@ -1,7 +1,7 @@
 import Axios from 'axios'
 export function fetchGames(){
     return dispatch =>{
-        Axios.get('https://jsonplaceholder.typicode.com/posts')
+        Axios.get('api/getGames')
         .then(function (response) {
           console.log(response);
         })
