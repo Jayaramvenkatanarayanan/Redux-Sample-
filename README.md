@@ -1,7 +1,7 @@
 
 ## Sample Games List React Redux App
 
-# Packages :
+#### Packages :
 
 - Server:   Express, Mongodb,lodash,validator
 
