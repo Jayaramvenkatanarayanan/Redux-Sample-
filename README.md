@@ -1,5 +1,5 @@
 
-## Sample Games List React Redux App
+## Employee Management App with  React Redux App
 
 #### Packages :
 
