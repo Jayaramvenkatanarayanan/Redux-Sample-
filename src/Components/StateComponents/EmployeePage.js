@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
 import EmployeeList from './EmployeeList'
-import {fetchEmployee} from '../../Actions/EmployeePage'
+import {fetchEmployee} from '../../Redux/Employee/actions'
 class EmployeePage extends Component {
     constructor(props) {
         super(props)
