@@ -7,27 +7,29 @@ class EmployeePage extends Component {
     constructor(props) {
         super(props)
     }
-    componentDidMount() {
+    componentWillMount() {
         this
             .props
             .fetchEmployee()
+
     }
     render() {
         return (
             <div>
-                <p>This is Employee Page</p>
-                <EmployeeList EmployeeList ={this.props.employee}/>
+                <p>This is Employee Page with department</p>
+                <EmployeeList EmployeeList ={this.props.Employee}/>
             </div>
         )
     }
 }
 EmployeePage.propTypes = {
-    employee: PropTypes.array.isRequired,
+    Employee: PropTypes.array.isRequired,
     fetchEmployee: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
-    return {employee: state.employee}
+    console.log('employee', state.Employee)
+    return {Employee: state.Employee}
 }
 
 export default connect(mapStateToProps, {fetchEmployee})(EmployeePage)

@@ -5,10 +5,12 @@ var {mongoose} = require('./db/mongoose');
 var {EmployeeTable} = require('./models/employee');
 var {Authcheck} = require('./middleware/authcheck');
 var {DepartTable} = require('./models/emp_depart');
+var cors = require('cors')
 const fs = require('fs');
 var app = express();
 
 app.use(bodyParser.json());
+app.use(cors())
 
 //create User
 
@@ -20,6 +22,7 @@ app.post('/adduser', (req, res) => {
     created_at: _.now(),
     updated_at: _.now()
   });
+
   employee
     .save()
     .then(() => {
@@ -35,6 +38,24 @@ app.post('/adduser', (req, res) => {
     .catch((e) => {
       res
         .status(400)
+        .send(JSON.stringify({status: false, restult: e}));
+    });
+
+});
+
+// get All emp
+
+app.get('/getAllEmp', Authcheck, (req, res) => {
+
+  EmployeeTable
+    .find({})
+    .then((result) => {
+      res
+        .status(200)
+        .send({result, status: true, Message: 'Get all employee'})
+    }, (e) => {
+      res
+        .status(404)
         .send(JSON.stringify({status: false, restult: e}));
     });
 
@@ -192,8 +213,8 @@ app.patch('/update_Department', Authcheck, (req, res) => {
 
 });
 
-app.listen(3000, () => {
-  console.log('server started 3000');
+app.listen(8080, () => {
+  console.log('server started 8080');
 });
 
 module.exports = app;

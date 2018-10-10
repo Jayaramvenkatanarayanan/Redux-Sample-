@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 class EmployeeList extends Component {
     constructor(props) {
         super(props)
-        state : {
-            employeeList: []
-        }
+    }
+    componentDidMount() {
+        console.log('****', this.props.EmployeeList)
     }
     render() {
         const emptyMessage = (
