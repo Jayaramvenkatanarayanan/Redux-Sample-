@@ -1,6 +1,7 @@
 import Axios from 'axios'
 import common from '../../Common/common'
 
+//get all employee
 export const SET_EMPLOYEE = 'SET_EMPLOYEE'
 
 export function setEmployee(employee) {
@@ -24,3 +25,4 @@ export function fetchEmployee() {
             });
     }
 }
+

@@ -7,17 +7,21 @@ class EmployeePage extends Component {
     constructor(props) {
         super(props)
     }
-    componentWillMount() {
-        this
-            .props
-            .fetchEmployee()
+    componentDidMount() {
 
     }
+    UNSAFE_componentWillMount() {
+        this.props.fetchEmployee()
+    }
     render() {
+        let data
+        if(this.props.Employee){
+            data = this.props.Employee
+        }
+
         return (
             <div>
-                <p>This is Employee Page with department</p>
-                <EmployeeList EmployeeList ={this.props.Employee}/>
+                {data !== undefined ?  <EmployeeList EmployeeList ={data}/> : '' }
             </div>
         )
     }
@@ -28,7 +32,6 @@ EmployeePage.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-    console.log('employee', state.Employee)
     return {Employee: state.Employee}
 }
 

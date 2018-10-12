@@ -36,9 +36,16 @@ app.post('/adduser', (req, res) => {
 
     })
     .catch((e) => {
-      res
+      if(e.code === 11000){
+        res
+        .status(400)
+        .send(JSON.stringify({status: false, message: 'Already this email has been registered'}));
+      } else {
+        res
         .status(400)
         .send(JSON.stringify({status: false, restult: e}));
+      }
+
     });
 
 });
@@ -212,6 +219,13 @@ app.patch('/update_Department', Authcheck, (req, res) => {
     });
 
 });
+
+app.use((req,res)=>{
+res.status(404).send(
+  {Message:'Check Api restend point / Server is not running '}
+)
+})
+
 
 app.listen(8080, () => {
   console.log('server started 8080');
